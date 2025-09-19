@@ -6,7 +6,7 @@ import { useLoader } from '@react-three/fiber'
 function Mountain({
     url,
     scale = 1,
-    position = [0, 0, 0],
+    position = [0, -2, 0],
     rotation = [0, 0, 0],
     ...props
 }) {
