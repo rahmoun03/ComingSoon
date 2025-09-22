@@ -13,7 +13,6 @@ function Mountain({
     const group = useRef()
     const gltf = useLoader(GLTFLoader, url)
 
-    // Clone the scene to avoid the "one object, one scene" issue
     const clonedScene = useMemo(() => clone(gltf.scene), [gltf.scene])
 
     return (

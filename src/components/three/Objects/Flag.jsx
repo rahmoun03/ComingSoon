@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import * as THREE from 'three';
+
 
 function Flag({
     position,
@@ -7,7 +9,7 @@ function Flag({
     rotation
 }) {
     const flagRef = useRef();
-    const {scene , animations } = useGLTF('/models/morocco_flag.glb');
+    const {scene , animations, materials, nodes } = useGLTF('/models/morocco_flag.glb');
     const {mixer, actions} = useAnimations(animations, flagRef);
 
     useEffect(() => {
@@ -16,11 +18,18 @@ function Flag({
             console.log('animation for flag: ', animations);
             actions[animations[0].name].play()
         }
+        if (scene) {
+            console.log('scene for flag: ', scene);
+            console.log('materials for flag: ', materials);
+            console.log('nodes for flag: ', nodes);
+            materials['flag'].color = new THREE.Color('#FFF');
+        }
     }, [animations]);
+
 
     return (
         <group ref={flagRef} position={position} scale={scale} rotation={rotation} >
-            <primitive object={scene} />
+            <primitive object={scene} material={materials['flag']} />
         </group>
     );
 }

@@ -2,7 +2,9 @@ import { Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
 import Lights from "./Lights";
+import Camera from "./Camera";
 import Mountain from "./Objects/Mountain";
+// import Mountain from "./Objects/MountainTest";
 import Astronaut from "./Objects/Astronaut";
 import Flag from './Objects/Flag';
 import ThreeText3D from './Objects/ThreeText3D';
@@ -46,22 +48,23 @@ function Scene() {
 	return (
 		<>
 			<Lights />
+			<Camera />
 			<Astronaut
 				url={'/models/astronaut/source/Astronaut.glb'}
 				initialAnimation="wave"
 				position={[2, 0, -1]}
 			/>
 			<ThreeText3D text="COMINGSOON" fontUrl="/fonts/Inter_Bold.json" />
-			<Flag position={[0, 2, -10]} scale={[2, 2, 2]} rotation={[0, 0, 0]}/>
+			<Flag position={[-1, 2.1, -8]} scale={[2, 2, 2]} rotation={[0, 0, -0.0]}/>
 
 			{/* <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade /> */}
 
 			{mountainProps.map((props, index) => (
 				<Mountain key={index} url={'/models/Mountain/f145306e65ac4498aa86db35231d7bf8_Textured.gltf'} {...props} />
 			))}
-			{/* <Ground /> */}
 
-			
+			{/* <Mountain scale={[200, 200, 200]} position={[0, -2.8, 0]}/> */}
+
 		</>
 	)
 }
