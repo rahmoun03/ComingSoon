@@ -1,6 +1,6 @@
-// ThreeText3D.jsx
+import * as THREE from 'three';
 import React, { useRef, useMemo } from 'react';
-import { Text3D } from '@react-three/drei';
+import { Text3D, useTexture } from '@react-three/drei';
 
 function ThreeText3D({
   text = 'COMINSOON',
@@ -8,6 +8,14 @@ function ThreeText3D({
   position = [0, 0, -3],
   letterSpacing = 0.1,
 }) {
+
+  // const [ normal, roughness, metallic, height, ao] = useTexture([
+  //   '/textures/metal/Metal_Plate_047_basecolor.jpg',
+  //   '/textures/metal/Metal_Plate_047_roughness.jpg',
+  //   '/textures/metal/Metal_Plate_047_metallic.jpg',
+  //   '/textures/metal/Metal_Plate_047_height.png',
+  //   '/textures/metal/Metal_Plate_047_ambientOcclusion.jpg',
+  // ]);
 
   const pos = [
     {x: -9,  y: -0.5, z: 0}, // C
@@ -35,8 +43,6 @@ function ThreeText3D({
     {x: 0,  y: 0, z: -0.1}, // O
     {x: 0,  y: 0, z: 0}, // N
   ];
-
-
   
   const groupRef = useRef();
 
@@ -52,6 +58,14 @@ function ThreeText3D({
     bevelSegments: 4,
   }), []);
 
+  // const myMaterial = new THREE.MeshPhysicalMaterial({
+  //   map: normal,
+  //   roughnessMap: roughness,
+  //   metalnessMap: metallic,
+  //   heightMap: height,
+  //   aoMap: ao,
+  // })
+
   return (
     <group ref={groupRef} position={position}>
       {text.split('').map((char, i) => (
@@ -63,7 +77,8 @@ function ThreeText3D({
           rotation={[rot[i].x, rot[i].y, rot[i].z]}
         >
           {char}
-          <meshStandardMaterial color="white" metalness={1} roughness={1} />
+          <meshPhysicalMaterial color={'white'} metalness={1} roughness={1} />
+          {/* <primitive object={myMaterial} attach='material' /> */}
         </Text3D>
       ))}
     </group>
