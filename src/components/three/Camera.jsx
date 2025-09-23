@@ -26,7 +26,7 @@ export default function Camera() {
       1000
     )
     cam.position.copy(curve.getPoint(0)) // start position
-    cameraRef.current = cam
+    cameraRef.current = cam;
     set({ camera: cam })
   }, [set, size])
 
@@ -38,14 +38,15 @@ export default function Camera() {
   }, [size])
 
   useFrame(() => {
-    if (!cameraRef.current) return
+    if (!cameraRef.current) return;
 
-    const t = scroll.offset
-    const targetPos = curve.getPoint(t)
+    const t = scroll.offset;
+    // console.log('scroll offset: ', t);
+    const targetPos = curve.getPoint(t);
 
-    cameraRef.current.position.lerp(targetPos, 0.08)
+    cameraRef.current.position.lerp(targetPos, 0.08);
     const lookAtPoint = new THREE.Vector3(0, 3, -10);
-    cameraRef.current.lookAt(lookAtPoint)
+    cameraRef.current.lookAt(lookAtPoint);
   })
 
   return null

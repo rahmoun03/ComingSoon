@@ -31,7 +31,10 @@ function App() {
 					<LoaderBridge />
 					<ScrollControls pages={6} damping={0.2}>
 						<Scene />
-						<BackgroundAudio url="/audio/Laedx_Jingle_v1.mp3" play={true} />
+						<BackgroundAudio 
+							url="/audio/Laedx_Jingle_v1.mp3" 
+							play={true} 
+						/>
 						{/* <OrbitControls /> */}
 					</ScrollControls>
 				</Suspense>

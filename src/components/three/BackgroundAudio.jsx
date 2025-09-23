@@ -25,7 +25,7 @@ export default function BackgroundAudio({ url, play }) {
       scene.remove(sound)
       camera.remove(listener)
     }
-  }, [camera, scene, url, play])
+  }, [url, play])
 
   return null
 }
