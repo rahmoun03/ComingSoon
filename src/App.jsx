@@ -1,11 +1,14 @@
 import { Canvas } from "@react-three/fiber";
-import { ScrollControls, useProgress, OrbitControls } from "@react-three/drei";
+import { useScroll, ScrollControls, useProgress, OrbitControls } from "@react-three/drei";
 import { useEffect, Suspense, useState } from "react";
+import { useFrame } from "@react-three/fiber";
 
-import Loader from "@/components/three/Loader";
-import Scene   from "@/components/three/Scene";
+
+import { useScrollStore } from "@/hooks/useScrollStore";
 import { useLoadingStore } from "@/hooks/useLoadingStore";
-import BackgroundAudio from "@/components/three/BackgroundAudio";
+import Loader from "@/components/ui/Loader";
+import Scene   from "@/components/three/Scene";
+import ScrollUI from "@/components/ui/ScrollUI";
 
 export function LoaderBridge() {
 	const { progress } = useProgress();
@@ -18,6 +21,19 @@ export function LoaderBridge() {
 	return null;
 }
 
+
+export function ScrollBridge({ pages = 6 }) {
+  const scroll = useScroll();
+  const setScrollOffset = useScrollStore((state) => state.setScrollOffset);
+
+  useFrame(() => {
+	setScrollOffset(scroll.offset); // 0 → 1
+  });
+
+  return null;
+}
+
+
 function App() {
 
 	const [started, setStarted] = useState(false)
@@ -26,19 +42,18 @@ function App() {
 		<section className="h-screen w-full bg-black text-white no-scrollbar">
 			{!started && <Loader onStart={() => setStarted(true)} />}
 
-			<Canvas camera={{ position: [0, 2, -4]} } shadows>
+			<Canvas camera={{ position: [10, 45, 90] }} shadows>
 				<Suspense fallback={null} >
 					<LoaderBridge />
-					<ScrollControls pages={6} damping={0.2}>
+					<ScrollControls pages={6} damping={0.1}>
 						<Scene />
-						<BackgroundAudio 
-							url="/audio/Laedx_Jingle_v1.mp3" 
-							play={true} 
-						/>
-						{/* <OrbitControls /> */}
+						<OrbitControls enableZoom={false} />
+						<ScrollBridge pages={6} />
 					</ScrollControls>
 				</Suspense>
 			</Canvas>
+
+			<ScrollUI pages={6} />
 		</section>
 	)
 }

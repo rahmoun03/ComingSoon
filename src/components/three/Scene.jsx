@@ -2,11 +2,11 @@ import { Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
 import Lights from "./Lights";
+import Effects from "./Effects";
 import Camera from "./Camera";
 import Mountain from "./Objects/Mountain";
-// import Mountain from "./Objects/MountainTest";
-// import BackgroundAudio from "@/components/three/BackgroundAudio";
-import Zellij from "./Objects/Zellij";
+import MovingSphere from "./Objects/MovingSphere";
+import BackgroundAudio from "@/components/three/BackgroundAudio";
 import Astronaut from "./Objects/Astronaut";
 import Flag from './Objects/Flag';
 import ThreeText3D from './Objects/ThreeText3D';
@@ -35,6 +35,7 @@ function Scene() {
 	return (
 		<>
 			<Lights />
+			<Effects />
 			<Camera />
 			<Flag 
 				position={[-1, 2.1, -8]}
@@ -45,17 +46,15 @@ function Scene() {
 				text="COMINGSOON"
 				fontUrl="/fonts/Inter_Bold.json"
 			/>
-			{/* <Zellij 
-				position={[0, 0, 0]}
-				scale={[10, 10, 10]}
-				rotation={[0, 0, 0]}
-			/> */}
 			<Astronaut
 				url={'/models/astronaut/source/Astronaut.glb'}
 				initialAnimation="wave"
 				position={[2, 0, -1]}
 			/>
-
+			<BackgroundAudio 
+				url="/audio/Laedx_Jingle_v1.mp3" 
+				play={true} 
+			/>
 			{mountainProps.map((props, index) => (
 				<Mountain
 					key={index}
@@ -63,6 +62,8 @@ function Scene() {
 					{...props}
 				/>
 			))}
+
+			<MovingSphere />
 
 
 
