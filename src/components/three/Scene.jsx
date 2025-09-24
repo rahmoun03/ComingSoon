@@ -10,6 +10,8 @@ import BackgroundAudio from "@/components/three/BackgroundAudio";
 import Astronaut from "./Objects/Astronaut";
 import Flag from './Objects/Flag';
 import ThreeText3D from './Objects/ThreeText3D';
+import RockPlanet from './Objects/RockPlanet';
+import RockPath from './Objects/RockPath';
 
 
 function Scene() {
@@ -64,7 +66,8 @@ function Scene() {
 			))}
 
 			<MovingSphere />
-
+			<RockPlanet />
+			<RockPath />
 
 
 

@@ -9,7 +9,7 @@ export default function Effects(){
 				<Bloom
 					luminanceThreshold={0.2}
 					luminanceSmoothing={0.9}
-					intensity={2.0}
+					intensity={0.2}
 				/>
 			</EffectComposer>
 		</>

@@ -7,8 +7,9 @@ import { useFrame } from "@react-three/fiber";
 import { useScrollStore } from "@/hooks/useScrollStore";
 import { useLoadingStore } from "@/hooks/useLoadingStore";
 import Loader from "@/components/ui/Loader";
+import LoadingPage from "@/components/ui/Loading";
 import Scene   from "@/components/three/Scene";
-import ScrollUI from "@/components/ui/ScrollUI";
+// import ScrollUI from "@/components/ui/ScrollUI";
 
 export function LoaderBridge() {
 	const { progress } = useProgress();
@@ -40,20 +41,20 @@ function App() {
 
 	return (
 		<section className="h-screen w-full bg-black text-white no-scrollbar">
-			{!started && <Loader onStart={() => setStarted(true)} />}
+			{!started && <LoadingPage onStart={() => setStarted(true)} />}
 
 			<Canvas camera={{ position: [10, 45, 90] }} shadows>
 				<Suspense fallback={null} >
 					<LoaderBridge />
-					<ScrollControls pages={6} damping={0.1}>
+					<ScrollControls pages={6} damping={0.6}>
 						<Scene />
-						<OrbitControls enableZoom={false} />
+						{/* <OrbitControls enableZoom={false} /> */}
 						<ScrollBridge pages={6} />
 					</ScrollControls>
 				</Suspense>
 			</Canvas>
 
-			<ScrollUI pages={6} />
+			{/* <ScrollUI pages={6} /> */}
 		</section>
 	)
 }
