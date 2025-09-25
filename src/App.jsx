@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { useScroll, ScrollControls, useProgress, OrbitControls } from "@react-three/drei";
+import { useScroll, ScrollControls, useProgress, OrbitControls, Stats } from "@react-three/drei";
 import { useEffect, Suspense, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
@@ -9,6 +9,7 @@ import { useLoadingStore } from "@/hooks/useLoadingStore";
 import Loader from "@/components/ui/Loader";
 import LoadingPage from "@/components/ui/Loading";
 import Scene   from "@/components/three/Scene";
+
 // import ScrollUI from "@/components/ui/ScrollUI";
 
 export function LoaderBridge() {
@@ -23,7 +24,7 @@ export function LoaderBridge() {
 }
 
 
-export function ScrollBridge({ pages = 6 }) {
+export function ScrollBridge({ pages = 12 }) {
   const scroll = useScroll();
   const setScrollOffset = useScrollStore((state) => state.setScrollOffset);
 
@@ -43,13 +44,14 @@ function App() {
 		<section className="h-screen w-full bg-black text-white no-scrollbar">
 			{!started && <LoadingPage onStart={() => setStarted(true)} />}
 
-			<Canvas camera={{ position: [10, 45, 90] }} shadows>
+			<Canvas camera={{ position: [10, 45, 90] }} >
 				<Suspense fallback={null} >
 					<LoaderBridge />
-					<ScrollControls pages={6} damping={0.6}>
+					<ScrollControls pages={12} damping={0.1}>
 						<Scene />
 						{/* <OrbitControls enableZoom={false} /> */}
-						<ScrollBridge pages={6} />
+						<ScrollBridge pages={12} />
+						<Stats />
 					</ScrollControls>
 				</Suspense>
 			</Canvas>

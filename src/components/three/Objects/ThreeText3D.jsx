@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import React, { useRef, useMemo } from 'react';
 import { Text3D, useTexture } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 function ThreeText3D({
   text = 'COMINSOON',
@@ -58,13 +59,13 @@ function ThreeText3D({
     bevelSegments: 4,
   }), []);
 
-  // const myMaterial = new THREE.MeshPhysicalMaterial({
-  //   map: normal,
-  //   roughnessMap: roughness,
-  //   metalnessMap: metallic,
-  //   heightMap: height,
-  //   aoMap: ao,
-  // })
+
+  useFrame(({ camera }) => {
+    groupRef.current.children.forEach((child) => {
+      const dist = camera.position.distanceTo(child.position)
+      child.visible = dist < 50;
+    })
+  })
 
   return (
     <group ref={groupRef} position={position}>

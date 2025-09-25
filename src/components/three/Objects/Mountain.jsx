@@ -1,7 +1,7 @@
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { useRef, useMemo } from 'react'
-import { useLoader } from '@react-three/fiber'
+import { useLoader, useFrame } from '@react-three/fiber'
 
 function Mountain({
     url,
@@ -14,6 +14,13 @@ function Mountain({
     const gltf = useLoader(GLTFLoader, url)
 
     const clonedScene = useMemo(() => clone(gltf.scene), [gltf.scene])
+
+    useFrame(({ camera }) => {
+        group.current.children.forEach((child) => {
+            const dist = camera.position.distanceTo(child.position)
+            child.visible = dist < 100 // hide if further than 100 units
+        })
+    })
 
     return (
         <group

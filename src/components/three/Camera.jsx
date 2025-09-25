@@ -23,6 +23,7 @@ export default function Camera() {
 		new THREE.Vector3(-2, 2, 15),
 		new THREE.Vector3(-1, 5, 10),
 		new THREE.Vector3(0, 5, 8), // end
+		new THREE.Vector3(0, 5, 8), // end
 	])
 
 
@@ -35,10 +36,11 @@ export default function Camera() {
 		new THREE.Vector3(-5, 3, 60),
 		new THREE.Vector3(-5, 3, 40),
 		new THREE.Vector3(-8, 2, 20),
-		new THREE.Vector3(-4, 3, 15),
-		new THREE.Vector3(-2, 2, 10),
-		new THREE.Vector3(-1, 5, 3),
-		new THREE.Vector3(0, 2, -2), // end 
+		new THREE.Vector3(0, 3, 15),
+		new THREE.Vector3(0, 2, 10),
+		new THREE.Vector3(0, 3, 3),
+		new THREE.Vector3(0, 2, -2), // end
+		new THREE.Vector3(0, 2, -2), // end
 	])
 
 	const smoothedLook = new THREE.Vector3();

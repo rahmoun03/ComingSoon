@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { useRef, useEffect } from "react";
 import { useGLTF, useTexture, useAnimations } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+
 
 function Astronaut({
 	url,
@@ -87,6 +89,13 @@ function Astronaut({
 			actions[initialAnimation].play();
 		}
 	}, [group, initialAnimation])
+
+	useFrame(({ camera }) => {
+		group.current.children.forEach((child) => {
+			const dist = camera.position.distanceTo(child.position)
+			child.visible = dist < 50 // hide if further than 100 units
+		})
+	})
 
 	return (
 		<group 

@@ -12,6 +12,7 @@ import Flag from './Objects/Flag';
 import ThreeText3D from './Objects/ThreeText3D';
 import RockPlanet from './Objects/RockPlanet';
 import RockPath from './Objects/RockPath';
+import Glisa from './Objects/Glisa';
 
 
 function Scene() {
@@ -37,7 +38,7 @@ function Scene() {
 	return (
 		<>
 			<Lights />
-			<Effects />
+			{/* <Effects /> */}
 			<Camera />
 			<Flag 
 				position={[-1, 2.1, -8]}
@@ -68,7 +69,8 @@ function Scene() {
 			<MovingSphere />
 			<RockPlanet />
 			<RockPath />
-
+			<Glisa position={[1, -10, -1]} rotation={[0, -0.3, 0.08]} />
+			<fog attach="fog" args={["#000000", 20, 50]} />
 
 
 			{/* <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade /> */}
