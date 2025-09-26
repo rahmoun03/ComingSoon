@@ -2,19 +2,16 @@
 @import "tw-animate-css";
 
 
-
 @layer utilities {
-	/* Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
 	}
 
-	/* IE, Edge and Firefox */
 	.no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-		scrollbar-width: none;  /* Firefox */
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 	}
-} 
+}
 
 @font-face {
   font-family: 'Audiowide';
@@ -56,8 +53,6 @@
   --font-custom : "JetBrains", "Montserrat";
   --font-custom : "Audiowide", "Montserrat";
   --font-custom : "beba", "Montserrat";
-  /* --font-custom : "Audiowide", "Montserrat"; */
-
 
   --color-secondary-50: #e6e9f0;
   --color-secondary-100: #6696FF;

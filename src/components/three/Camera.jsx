@@ -11,8 +11,8 @@ export default function Camera() {
 	const scroll = useScroll()
 
 	const curve = new THREE.CatmullRomCurve3([
-		new THREE.Vector3(10, 45, 86), //start
-		new THREE.Vector3(10, 40, 90),
+		new THREE.Vector3(10, 45, 87), //start
+		new THREE.Vector3(10, 40, 87),
 		new THREE.Vector3(10, 30, 80),
 		new THREE.Vector3(8, 10, 75),
 		new THREE.Vector3(5, 5, 70), // hive
