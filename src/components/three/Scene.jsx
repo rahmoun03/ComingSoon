@@ -41,9 +41,9 @@ function Scene() {
 			{/* <Effects /> */}
 			<Camera />
 			<Flag 
-				position={[-1, 2.1, -8]}
-				scale={[2, 2, 2]}
-				rotation={[0, 0, 0]}
+				position={[-1, 0, -6]}
+				scale={[2.5, 2.5, 2.5]}
+				rotation={[0, Math.PI, 0]}
 			/>
 			<ThreeText3D
 				text="COMINGSOON"

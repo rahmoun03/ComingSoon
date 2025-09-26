@@ -9,7 +9,7 @@ function Flag({
     rotation
 }) {
     const flagRef = useRef();
-    const {scene , animations } = useGLTF('/models/morocco_flag.glb');
+    const {scene , animations } = useGLTF('/models/FlagV2.glb');
     const {mixer, actions} = useAnimations(animations, flagRef);
 
     useEffect(() => {
