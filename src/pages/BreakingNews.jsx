@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 
 import Dots from '@/assets/images/dots.svg'
 import Astro from '@/assets/images/astro.png'
@@ -29,97 +29,105 @@ function UploadCVForm({ onClose }) {
 	}
 
 	return (
-		<div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50 animate-fadeIn">
-		<div className="bg-white/10 backdrop-blur-md border border-[#E2E8F0]/30 rounded-xl p-8 w-[28rem] relative shadow-2xl">
-			
-			{/* Close button */}
-			<button
-				className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors text-2xl"
-				onClick={onClose}
-				aria-label="Close form"
-			>
-				✕
-			</button>
-
-			<h2 className="text-2xl font-bold mb-6 text-white text-start">
-				Let us know you
-			</h2>
-
-			<form onSubmit={handleSubmit} className="flex flex-col gap-6">
-				{/* First Name */}
-				<div className="flex flex-col gap-2">
-					<label htmlFor="firstName" className="text-white/80 text-sm font-medium">
-						First Name
-					</label>
-					<input
-						type="text"
-						id="firstName"
-						className="bg-transparent border-b border-[#E2E8F0]/30 focus:border-white focus:outline-none px-2 py-1 text-white placeholder-gray-400 transition-all"
-						placeholder="Enter your first name"
-					/>
-				</div>
-
-				{/* Last Name */}
-				<div className="flex flex-col gap-2">
-					<label htmlFor="lastName" className="text-white/80 text-sm font-medium">
-						Last Name
-					</label>
-					<input
-						type="text"
-						id="lastName"
-						className="bg-transparent border-b border-[#E2E8F0]/30 focus:border-white focus:outline-none px-2 py-1 text-white placeholder-gray-400 transition-all"
-						placeholder="Enter your last name"
-					/>
-				</div>
-
-				{/* Phone */}
-				<div className="flex flex-col gap-2">
-					<label htmlFor="phone" className="text-white/80 text-sm font-medium">
-						Phone
-					</label>
-					<input
-						type="tel"
-						id="phone"
-						className="bg-transparent border-b border-[#E2E8F0]/30 focus:border-white focus:outline-none px-2 py-1 text-white placeholder-gray-400 transition-all"
-						placeholder="Enter your phone number"
-					/>
-				</div>
-
-				{/* Email */}
-				<div className="flex flex-col gap-2">
-					<label htmlFor="email" className="text-white/80 text-sm font-medium">
-						Email
-					</label>
-					<input
-						type="email"
-						id="email"
-						className="bg-transparent border-b border-[#E2E8F0]/30 focus:border-white focus:outline-none px-2 py-1 text-white placeholder-gray-400 transition-all"
-						placeholder="Enter your email"
-					/>
-				</div>
-
-				{/* CV Upload */}
-				<div className="flex flex-col gap-2">
-					<label htmlFor="cv" className="text-white/80 text-sm font-medium">
-						Upload CV
-					</label>
-					<input
-						type="file"
-						id="cv"
-						accept=".pdf,.doc,.docx"
-						className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-white file:text-black hover:file:bg-gray-200 cursor-pointer text-white"
-					/>
-				</div>
-
-				{/* Submit */}
+		<div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50 animate-fadeIn">
+			<div className="bg-white/10 backdrop-blur-md border border-[#E2E8F0]/30 rounded-xl p-8 w-[28rem] relative shadow-2xl">
+				
+				{/* Close button */}
 				<button
-					type="submit"
-					className="mt-4 bg-white text-black font-semibold rounded-md py-2 hover:bg-[#E2E8F0]/70 hover:text-white transition-colors"
+					className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors text-2xl"
+					onClick={onClose}
+					aria-label="Close form"
 				>
-					Submit
+					✕
 				</button>
-			</form>
-		</div>
+
+				<h2 className="text-2xl font-bold mb-6 text-white text-start">
+					Let us know you
+				</h2>
+
+				<form onSubmit={handleSubmit} className="flex flex-col gap-6">
+					{/* First Name */}
+					<div className="flex flex-col gap-2">
+						<label htmlFor="firstName" className="text-white/80 text-sm font-medium">
+							First Name
+						</label>
+						<input
+							type="text"
+							id="firstName"
+							className="bg-transparent border-b border-[#E2E8F0]/30 focus:border-white focus:outline-none px-2 py-1 text-white placeholder-gray-400 transition-all"
+							placeholder="Enter your first name"
+							required={true}
+						/>
+					</div>
+
+					{/* Last Name */}
+					<div className="flex flex-col gap-2">
+						<label htmlFor="lastName" className="text-white/80 text-sm font-medium">
+							Last Name
+						</label>
+						<input
+							type="text"
+							id="lastName"
+							className="bg-transparent border-b border-[#E2E8F0]/30 focus:border-white focus:outline-none px-2 py-1 text-white placeholder-gray-400 transition-all"
+							placeholder="Enter your last name"
+							required={true}
+						/>
+					</div>
+
+					{/* Phone */}
+					<div className="flex flex-col gap-2">
+						<label htmlFor="phone" className="text-white/80 text-sm font-medium">
+							Phone
+						</label>
+						<input
+							type="tel"
+							id="phone"
+							className="bg-transparent border-b border-[#E2E8F0]/30 focus:border-white focus:outline-none px-2 py-1 text-white placeholder-gray-400 transition-all"
+							placeholder="Enter your phone number"
+							required={true}
+						/>
+					</div>
+
+					{/* Email */}
+					<div className="flex flex-col gap-2">
+						<label htmlFor="email" className="text-white/80 text-sm font-medium">
+							Email
+						</label>
+						<input
+							type="email"
+							id="email"
+							className="bg-transparent border-b border-[#E2E8F0]/30 focus:border-white focus:outline-none px-2 py-1 text-white placeholder-gray-400 transition-all"
+							placeholder="Enter your email"
+							required={true}
+						/>
+					</div>
+
+					{/* CV Upload */}
+					<div className="flex flex-col gap-2">
+						<label htmlFor="cv" className="text-white/80 text-sm font-medium">
+							Upload CV
+						</label>
+						<input
+							type="file"
+							id="cv"
+							accept=".pdf,.doc,.docx"
+							className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-white file:text-black hover:file:bg-gray-200 cursor-pointer text-white"
+							required={true}
+						/>
+					</div>
+
+					{/* Submit */}
+					<button
+						type="submit"
+						className="flex flex-row justify-center gap-4 bg-white text-black font-semibold border-[#E2E8F0]/30 border-1 rounded-md px-6 py-4 cursor-pointer"
+						style={{
+							filter: 'drop-shadow(0px 0px 10px #ffffff)',
+						}}
+					>
+						Submit
+					</button>
+				</form>
+			</div>
 		</div>
 	);
 }
@@ -196,16 +204,25 @@ export default function BreakingNews() {
 			{/* bottom */}
 			<div className="absolute bottom-8 w-full h-24 flex flex-row justify-around items-center">
 				<button 
-					className="bg-white text-black font-semibold border-[#E2E8F0]/30 border-1 rounded-md px-6 py-4 drop-shadow-md shadow-light-900 cursor-pointer"
+					className="flex flex-row gap-4 bg-white text-black font-semibold border-[#E2E8F0]/30 border-1 rounded-md px-6 py-4 cursor-pointer"
 					onClick={() => setShowForm(true)}
+					style={{
+						filter: 'drop-shadow(0px 0px 10px #ffffff)',
+					}}
 				>
-				Upload CV
+					Upload CV
+					<Download />
 				</button>
-				<div className="w-1/2 h-2 bg-[#E2E8F0]/30 rounded-md drop-shadow-xl shadow-light-900/80">
-				<div
-					className="h-full bg-white/80 rounded-md transition-all duration-500"
-					style={{ width: `${((index + 1) / cards.length) * 100}%` }}
-				></div>
+				<div 
+					className="w-1/2 h-2 bg-[#E2E8F0]/30 rounded-md"
+					style={{
+						filter: 'drop-shadow(0px 0px 10px #ffffff)',
+					}}
+				>
+					<div
+						className="h-full bg-white/80 rounded-md transition-all duration-500"
+						style={{ width: `${((index + 1) / cards.length) * 100}%` }}
+					></div>
 				</div>
           	</div>
         </div>

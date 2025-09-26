@@ -55,7 +55,7 @@ function App() {
 				</Suspense>
 			</Canvas>
 
-			{/* <ScrollUI pages={12} /> */}
+			<ScrollUI pages={12} />
 		</section>
 	)
 }
