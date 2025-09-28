@@ -1,5 +1,8 @@
 import { useScrollStore } from "@/hooks/useScrollStore";
 import BreakingNews from '@/pages/BreakingNews';
+import NoveXperience from '@/pages/NoveXperience';
+import HiveXperience from '@/pages/HiveXperience';
+import Enter from '@/pages/Enter';
 
 export default function ScrollUI({ pages = 12 }) {
   const scrollOffset = useScrollStore((state) => state.scrollOffset);
@@ -8,17 +11,13 @@ export default function ScrollUI({ pages = 12 }) {
   return (
     <div className="absolute top-0 left-0 w-full h-full">
       {currentPage === 0 && (
-        <BreakingNews />
+        <Enter />
       )}
       {currentPage === 3 && (
-        <div className="hive-section">
-          <h2 className="text-5xl text-yellow-400">HiveXperience Section</h2>
-        </div>
+        <NoveXperience />
       )}
       {currentPage === 5 && (
-        <div className="nove-section">
-          <h2 className="text-5xl text-purple-400">NoveXperience Section</h2>
-        </div>
+        <HiveXperience />
       )}
       {/* Pages 2,5,6 empty */}
     </div>
