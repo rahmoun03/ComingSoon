@@ -1,0 +1,14 @@
+# Allow all search engines
+User-agent: *
+Disallow:
+
+# Block internal/private routes
+Disallow: /admin/
+Disallow: /api/
+
+# Block specific bots
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /

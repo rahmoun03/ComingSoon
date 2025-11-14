@@ -1,0 +1,49 @@
+services:
+
+  nginx:
+    container_name: nginx
+    image: nginximg
+    build: ./nginx
+    ports:
+      - '9900:80'
+    depends_on:
+      - backend
+      - postgresdb
+    volumes:
+      - ./frontend/dist/:/app
+    networks:
+      - netwo
+    env_file:
+      - '.env'
+    init: true
+
+  backend:
+    # container_name: backend
+    image: backendimg
+    build: ./backend
+    networks:
+      - netwo
+    volumes:
+      - ./backend/srcs/main.py:/work/main.py
+      - ./backend/srcs/models.py:/work/models.py
+      - ./backend/siviyat:/cvteque/
+    env_file:
+      - '.env'
+    depends_on:
+      - postgresdb
+    init: true
+  
+  postgresdb:
+    container_name: postgresdb
+    image: postgres:16-alpine
+    restart: always
+    ports:
+      - '5432:5432'
+    networks:
+      - netwo
+    env_file:
+      - .env
+    
+networks:
+  netwo:
+    name: 'our_network'
